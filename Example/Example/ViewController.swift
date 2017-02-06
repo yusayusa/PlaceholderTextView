@@ -21,7 +21,7 @@ class ViewController: UIViewController {
                                        attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 15),
                                                     NSForegroundColorAttributeName: UIColor.gray,
                                                     ])
-    textView.set(attribute: attribute)
+    textView.setPlaceholder(attribute: attribute)
   }
 }
 
