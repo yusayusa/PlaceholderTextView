@@ -31,7 +31,7 @@ extension UITextView {
   
   // MARK: - Functions
   
-  public func set(attribute: NSAttributedString) {
+  public func setPlaceholder(attribute: NSAttributedString) {
     
     guard placeholderLabel == nil else {
       return
@@ -75,7 +75,7 @@ extension UITextView {
       .constraint(equalTo: layoutMarginsGuide.trailingAnchor)
       .isActive = true
     label.bottomAnchor
-      .constraint(equalTo: layoutMarginsGuide.bottomAnchor)
+      .constraint(lessThanOrEqualTo: layoutMarginsGuide.bottomAnchor)
       .isActive = true
     
     placeholderLabel = label
