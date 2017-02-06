@@ -17,7 +17,11 @@ class ViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    textView.
+    let attribute = NSAttributedString(string: "placeholder",
+                                       attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 15),
+                                                    NSForegroundColorAttributeName: UIColor.gray,
+                                                    ])
+    textView.set(attribute: attribute)
   }
 }
 

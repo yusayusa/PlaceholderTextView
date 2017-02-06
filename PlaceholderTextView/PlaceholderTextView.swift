@@ -13,21 +13,7 @@ extension UITextView {
   // MARK: - Properties
   
   private struct StoredProperties {
-    static var configuration: Void?
     static var placeholderLabel: Void?
-  }
-  
-  private var configuration: Configuration? {
-    get {
-      let value = objc_getAssociatedObject(self, &StoredProperties.configuration) as? Configuration
-      return value
-    }
-    set {
-      objc_setAssociatedObject(self,
-                               &StoredProperties.configuration,
-                               newValue,
-                               objc_AssociationPolicy.OBJC_ASSOCIATION_COPY_NONATOMIC)
-    }
   }
   
   private var placeholderLabel: UILabel? {
@@ -45,14 +31,13 @@ extension UITextView {
   
   // MARK: - Functions
   
-  public func set(configuration: Configuration) {
+  public func set(attribute: NSAttributedString) {
     
     guard placeholderLabel == nil else {
       return
     }
     
-    self.configuration = configuration
-    configurePlaceholder(configuration: configuration)
+    configurePlaceholder(attribute: attribute)
     
     NotificationCenter.default
       .addObserver(self,
@@ -66,35 +51,32 @@ extension UITextView {
     placeholderLabel?.alpha = text.isEmpty ? 1 : 0
   }
   
-  private func configurePlaceholder(configuration: Configuration) {
+  private func configurePlaceholder(attribute: NSAttributedString) {
     
     guard placeholderLabel == nil else {
       return
     }
     
-    guard configuration.placeholder.isEmpty == false else {
-      return
-    }
-    
     let label: UILabel = .init()
     label.numberOfLines = 0
-    label.backgroundColor = UIColor.clear
-    label.font = configuration.font
-    label.textColor = configuration.color
-    label.text = configuration.placeholder
     label.alpha = text.isEmpty ? 1 : 0
+    label.attributedText = attribute
     
-    textInputView.addSubview(label)
+    addSubview(label)
     
-    let top = textContainerInset.top
-    let left = textContainerInset.left
-    let right = textContainerInset.right
-    
-    label <- [
-      Top(top),
-      Left(left + 4),
-      Right(right + 4),
-    ]
+    label.translatesAutoresizingMaskIntoConstraints = false
+    label.topAnchor
+      .constraint(equalTo: layoutMarginsGuide.topAnchor)
+      .isActive = true
+    label.leadingAnchor
+      .constraint(equalTo: layoutMarginsGuide.leadingAnchor)
+      .isActive = true
+    label.trailingAnchor
+      .constraint(equalTo: layoutMarginsGuide.trailingAnchor)
+      .isActive = true
+    label.bottomAnchor
+      .constraint(equalTo: layoutMarginsGuide.bottomAnchor)
+      .isActive = true
     
     placeholderLabel = label
   }

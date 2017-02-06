@@ -12,7 +12,23 @@
 		602763221E478F9A003F47AA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 602763201E478F9A003F47AA /* Main.storyboard */; };
 		602763241E478F9A003F47AA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 602763231E478F9A003F47AA /* Assets.xcassets */; };
 		602763271E478F9A003F47AA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 602763251E478F9A003F47AA /* LaunchScreen.storyboard */; };
+		602763361E47912D003F47AA /* PlaceholderTextView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 602763351E47912D003F47AA /* PlaceholderTextView.framework */; };
+		602763371E47912D003F47AA /* PlaceholderTextView.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 602763351E47912D003F47AA /* PlaceholderTextView.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		602763381E47912D003F47AA /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				602763371E47912D003F47AA /* PlaceholderTextView.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		602763191E478F9A003F47AA /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -22,6 +38,7 @@
 		602763231E478F9A003F47AA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		602763261E478F9A003F47AA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		602763281E478F9A003F47AA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		602763351E47912D003F47AA /* PlaceholderTextView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = PlaceholderTextView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +46,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				602763361E47912D003F47AA /* PlaceholderTextView.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -38,6 +56,7 @@
 		602763101E478F9A003F47AA = {
 			isa = PBXGroup;
 			children = (
+				602763351E47912D003F47AA /* PlaceholderTextView.framework */,
 				6027631B1E478F9A003F47AA /* Example */,
 				6027631A1E478F9A003F47AA /* Products */,
 			);
@@ -74,6 +93,7 @@
 				602763151E478F9A003F47AA /* Sources */,
 				602763161E478F9A003F47AA /* Frameworks */,
 				602763171E478F9A003F47AA /* Resources */,
+				602763381E47912D003F47AA /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -297,6 +317,7 @@
 				6027632D1E478F9A003F47AA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
