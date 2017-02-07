@@ -40,15 +40,14 @@ extension UITextView {
     configurePlaceholder(attribute: attribute)
     
     NotificationCenter.default
-      .addObserver(self,
-                   selector: #selector(self.didChangeTextView),
-                   name: NSNotification.Name.UITextViewTextDidChange,
-                   object: self)
-  }
-  
-  private dynamic func didChangeTextView() {
-    
-    placeholderLabel?.alpha = text.isEmpty ? 1 : 0
+      .addObserver(forName: NSNotification.Name.UITextViewTextDidChange,
+                   object: nil,
+                   queue: nil,
+                   using: { [weak self] _ in
+                    
+                    guard let `self` = self else { return }
+                    self.placeholderLabel?.isHidden = !self.text.isEmpty
+      })
   }
   
   private func configurePlaceholder(attribute: NSAttributedString) {
@@ -59,12 +58,12 @@ extension UITextView {
     
     let label: UILabel = .init()
     label.numberOfLines = 0
-    label.alpha = text.isEmpty ? 1 : 0
+    label.translatesAutoresizingMaskIntoConstraints = false
+    label.isHidden = !text.isEmpty
     label.attributedText = attribute
     
     addSubview(label)
     
-    label.translatesAutoresizingMaskIntoConstraints = false
     label.topAnchor
       .constraint(equalTo: layoutMarginsGuide.topAnchor)
       .isActive = true
